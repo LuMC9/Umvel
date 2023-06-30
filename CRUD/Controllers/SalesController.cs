@@ -37,5 +37,17 @@ namespace CRUD.Controllers
 
             return Ok(sales);
         }
+
+        [HttpPut]
+        [Route("{id}")]
+        public async Task<IActionResult> CancelSale(int id)
+        {
+            Sale sale = await _salesService.CancelSale(id);
+
+            if (sale is null)
+                return NotFound();
+
+            return Ok(sale);
+        }
     }
 }

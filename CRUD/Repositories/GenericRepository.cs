@@ -30,5 +30,13 @@ namespace CRUD.Repositories
         {
            return await _dbSet.FindAsync(id);
         }
+
+        public async Task<T> UpdateAsync(T entity)
+        {
+            _dbSet.Update(entity);
+            await _dbContext.SaveChangesAsync();
+
+            return entity;
+        }
     }
 }

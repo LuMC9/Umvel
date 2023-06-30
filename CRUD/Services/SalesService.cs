@@ -28,8 +28,7 @@ namespace CRUD.Services
 
                 sale = await _salesRepository.CreateAsync(sale);
 
-                return sale;
-            }
+                return sale;            }
 
             return null;
         }
@@ -39,6 +38,20 @@ namespace CRUD.Services
             var sales = await _salesRepository.GetByDateRange(fromDate, toDate);
             
             return sales;
+        }
+
+        public async Task<Sale> CancelSale(int id)
+        {
+            Sale sale = await _salesRepository.GetByIdAsync(id);
+            if(sale != null)
+            {
+                sale.Status = Enums.Enums.SaleStatus.Cancelled.ToString();
+                sale = await _salesRepository.UpdateAsync(sale);
+
+                return sale;
+            }
+
+            return null;
         }
     }
 }

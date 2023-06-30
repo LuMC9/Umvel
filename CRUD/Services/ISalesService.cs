@@ -7,6 +7,6 @@ namespace CRUD.Services
     {
         Task<Sale> CreateAsync(SaleDTO saleDTO);
         Task<IEnumerable<Sale>> GetByDateRange(DateTime fromDate, DateTime toDate);
-
-    }
+        Task<Sale> CancelSale(int id);
+     }
 }

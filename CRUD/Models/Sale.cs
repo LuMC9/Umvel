@@ -10,5 +10,6 @@ namespace CRUD.Models
 
         [Column(TypeName = "decimal(18, 0)")]
         public decimal Total { get; set; }
+        public string Status { get; set; }
     }
 }

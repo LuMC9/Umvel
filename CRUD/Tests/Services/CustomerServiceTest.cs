@@ -58,9 +58,10 @@ namespace CRUD.Tests.Services
         public async Task GetByIdAsync_Test()
         {
             Customer customers = new();
+            int id = 1;
 
             _mockCustomerRepo.Setup(x => x.GetByIdAsync(It.IsAny<int>())).ReturnsAsync(customers).Verifiable();
-            var response = await _customerService.GetAllClientsAsync();
+            var response = await _customerService.GetByIdAsync(id);
 
             Assert.NotNull(response);
             _mockCustomerRepo.Verify();
